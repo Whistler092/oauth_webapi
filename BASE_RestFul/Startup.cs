@@ -3,6 +3,7 @@ using Owin;
 using System.Web.Http;
 using System;
 using Microsoft.Owin.Security.OAuth;
+using BASE_RestFul.Providers;
 
 [assembly: OwinStartup(typeof(BASE_RestFul.Startup))]
 
@@ -17,6 +18,7 @@ namespace BASE_RestFul
 
             HttpConfiguration config = new HttpConfiguration();
             WebApiConfig.Register(config);
+            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll); //Access from Any Domain
             app.UseWebApi(config);
         }
 
